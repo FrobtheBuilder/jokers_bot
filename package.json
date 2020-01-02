@@ -1,0 +1,9 @@
+{
+  "name": "jokers_bot",
+  "version": "1.0.0",
+  "description": "Joker's bot.",
+  "main": "index.ts",
+  "author": "FrobtheBuilder",
+  "license": "MIT",
+  "private": true
+}
