@@ -69,8 +69,10 @@ async function trick(state: TrickState) {
         state.mode = "sequential"
         state.nextIndex = state.count
     }
-
-    console.log(tricks[state.nextIndex])
+    
+    console.log("Posting trick:")
+    console.log(`"${tricks[state.nextIndex]}"`)
+    
     //await client.post("statuses/update", {status: tricks[state.nextIndex], source: "Joker's Trick"})
     
 
@@ -82,10 +84,14 @@ async function trick(state: TrickState) {
     //advance trick index according to mode
     if (state.mode == "random") {
         state.nextIndex = Math.floor(Math.random() * tricks.length)
+        console.log("Out of tricks, picking next trick at random.")
     }
     else {
         state.nextIndex = state.nextIndex + 1
+        const tricksLeft = tricks.length - state.nextIndex
+        console.log(`${tricksLeft} ${tricksLeft > 1 ? "tricks" : "trick"} left.`)
     }
+    console.log("")
 
     state.count = tricks.length
     const [quantity, unit] = config.interval.split(" ")
