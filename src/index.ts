@@ -73,7 +73,7 @@ async function trick(state: TrickState) {
     console.log("Posting trick:")
     console.log(`"${tricks[state.nextIndex]}"`)
     
-    //await client.post("statuses/update", {status: tricks[state.nextIndex], source: "Joker's Trick"})
+    await client.post("statuses/update", {status: tricks[state.nextIndex], source: "Joker's Trick"})
     
 
     // switch to random mode if we run out of tricks, or only one was added
