@@ -1,9 +1,25 @@
 {
   "name": "jokers_bot",
   "version": "1.0.0",
-  "description": "Joker's bot.",
-  "main": "index.ts",
+  "description": "Joker's Bot.",
+  "main": "src/index.ts",
   "author": "FrobtheBuilder",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "scripts": {
+    "start": "pm2 start ./src/index.ts -i 1",
+    "dev": "node_modules/.bin/ts-node ./src/index.ts"
+  },
+  "volta": {
+    "node": "13.5.0",
+    "yarn": "1.21.1"
+  },
+  "dependencies": {
+    "@types/node": "^13.1.2",
+    "@types/twitter": "^1.7.0",
+    "moment": "^2.24.0",
+    "ts-node": "^8.5.4",
+    "twitter-lite": "^0.9.4",
+    "typescript": "^3.7.4"
+  }
 }
