@@ -4,5 +4,6 @@
     "accessToken": "zzz",
     "accessTokenSecret": "aaa",
     "trickFile": "data/tricks.txt",
-    "interval": "2 hours"
+    "interval": "2 hours",
+    "tweet": true
 }

@@ -69,12 +69,11 @@ async function trick(state: TrickState) {
         state.mode = "sequential"
         state.nextIndex = state.count
     }
-    
-    console.log("Posting trick:")
+    console.log("\nPosting trick:")
     console.log(`"${tricks[state.nextIndex]}"`)
-    
-    await client.post("statuses/update", {status: tricks[state.nextIndex], source: "Joker's Trick"})
-    
+    if (config.tweet) {
+        await client.post("statuses/update", {status: tricks[state.nextIndex], source: "Joker's Trick"})
+    }
 
     // switch to random mode if we run out of tricks, or only one was added
     if (state.mode == "sequential" && state.nextIndex + 1 >= tricks.length) {
@@ -91,12 +90,14 @@ async function trick(state: TrickState) {
         const tricksLeft = tricks.length - state.nextIndex
         console.log(`${tricksLeft} ${tricksLeft > 1 ? "tricks" : "trick"} left.`)
     }
-    console.log("")
+    
 
     state.count = tricks.length
     const [quantity, unit] = config.interval.split(" ")
 
-    state.nextTrickTime = moment().add(Number(quantity), unit as any).valueOf()
+    const nextTrickTime = moment().add(Number(quantity), unit as any)
+    console.log(`Next trick scheduled for ${nextTrickTime.format('h:mm a')} on ${nextTrickTime.format('MMMM Do YYYY')}.`)
+    state.nextTrickTime = nextTrickTime.valueOf()
     await saveTrickState(state)
 }
 
