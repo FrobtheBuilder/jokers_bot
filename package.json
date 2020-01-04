@@ -11,7 +11,7 @@
     "dev": "node_modules/.bin/ts-node ./src/index.ts"
   },
   "volta": {
-    "node": "13.5.0",
+    "node": "12.14.0",
     "yarn": "1.21.1"
   },
   "dependencies": {

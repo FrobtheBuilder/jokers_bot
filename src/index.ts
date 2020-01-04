@@ -57,7 +57,7 @@ async function init() {
         if (trickState.nextTrickTime === null || moment().valueOf() > trickState.nextTrickTime) {
             trick(trickState)
         }
-    }, 1000)
+    }, config.checkIntervalMs)
 }
 
 async function trick(state: TrickState) {
