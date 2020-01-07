@@ -5,8 +5,7 @@ import moment from "moment"
 import Twitter = require("twitter-lite")
 import config = require("../config.json")
 
-const readFile = util.promisify(fs.readFile)
-const writeFile = util.promisify(fs.writeFile)
+const {readFile, writeFile} = fs.promises
 
 interface TrickState {
     nextIndex: number,
@@ -72,7 +71,10 @@ async function trick(state: TrickState) {
     console.log("\nPosting trick:")
     console.log(`"${tricks[state.nextIndex]}"`)
     if (config.tweet) {
-        await client.post("statuses/update", {status: tricks[state.nextIndex], source: "Joker's Trick"})
+        try {
+            await client.post("statuses/update", {status: tricks[state.nextIndex], source: "Joker's Trick"})
+        }
+        catch (e) {}
     }
 
     // switch to random mode if we run out of tricks, or only one was added
