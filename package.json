@@ -17,7 +17,7 @@
   "dependencies": {
     "@types/node": "^13.1.2",
     "@types/twitter": "^1.7.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "ts-node": "^8.5.4",
     "twitter-lite": "^0.9.4",
     "typescript": "^3.7.4"
